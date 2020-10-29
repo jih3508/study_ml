@@ -46,3 +46,6 @@ cost = losses.mean()
 print(cost)
 
 #F.binary_cross_entropy(hypothesis, y_train): 손실값 평균 구해주는 함수
+
+hypothesis = torch.sigmoid(x_train.matmul(W) + b)
+print(hypothesis[:5])

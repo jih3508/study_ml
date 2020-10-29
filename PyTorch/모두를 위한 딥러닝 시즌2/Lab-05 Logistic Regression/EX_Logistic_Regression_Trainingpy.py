@@ -19,7 +19,7 @@ b = torch.zeros(1, requires_grad= True)
 # optimizer 설정
 optimizer = optim.SGD([W, b], lr=1)
 
-nb_epochs = 2000
+nb_epochs = 1000
 for epoch in range(nb_epochs + 1):
     
     #Cost 개선
@@ -36,3 +36,13 @@ for epoch in range(nb_epochs + 1):
         print('Epoch {:4d}/{} Cost: {:.6f}'.format(
             epoch, nb_epochs, cost.item()
         ))
+
+hypothesis = torch.sigmoid(x_train.matmul(W) + b)
+print(hypothesis[:5])
+
+prediction = hypothesis >= torch.FloatTensor([0.5])
+print(prediction[:5])
+print(y_train[:5])
+
+correct_prediction = prediction.float() == y_train
+print(correct_prediction[:5])
